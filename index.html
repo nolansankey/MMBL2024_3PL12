@@ -1,0 +1,237 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>3PL</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width", initial-scale="1">
+    
+    <!-- Keywords used in the website -->
+    <meta name="keywords" content="Three Pointer League, 3PL, Sports Betting League, SBL, Nolan Sankey">
+    
+    <!-- Description for Website -->
+    <meta name="description" content="The official website for 3PL and SBL">
+    
+    <!-- Bootstrap.css -->
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- Custom styling -->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+  </head>
+    
+  <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+  <body id="page-top" data-spy="scroll" data-target=".navbar fixed-top">
+    <nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="header">
+        <div class="header-text">
+          <h1><strong>3PL / MMBL</strong></h1>
+          <p id="user-note"></p>
+        </div>
+      </div>   
+    </nav>
+
+    <!-- Login Section -->
+    <section id="login" class="login-section">
+      <h1>Login:</h1>
+      <div>
+        <form id="login-form">
+          <div class="field name-entry">
+            <label for="login-name">Name: </label>
+            <select id="login-name-select" name="login-name-select" class="input-box">
+              <option value="Default">(name)</option>
+            </select><br>
+          </div> 
+          <div class="field password-entry">
+            <label>Password: <input type="text" id="password-typed" name="password-typed" class="input-box" required /></label><br>
+            <input type="submit" id="login-submit" value="Submit"><br>
+          </div>
+        </form>
+      </div>
+      <br>
+      <p><a href="javascript:void(0);" onclick="forgotPW()"><i>Forgot Password</i></a></p>
+      <p id="forgot-pw-message">You Fool! Text Nolan and he can help you log in or reset your password.</p>
+      <br>
+    </section>
+      
+    <!-- Register Section -->
+    <section id="register" class="register-section">
+      <!--<h1>OR</h1><br>
+      <h1>Register:</h1>
+        <div class="intro-text">
+          <br>
+          <h4><strong>Welcome to Three Pointer League Season 11!</strong></h4><br>
+            <p><strong>How to play: </strong></p>
+            <p>Each day, you will answer 3 questions about that day's sporting events (ex. Will the San Francisco 49ers beat the Kansas City Chiefs? Will the Denver Nuggets and Boston Celtics combine for 225 or more points? Will Connor McDavid score a goal in tonight's game?).</p><br>
+            <p>For each question you get right, you will earn a point. If you correctly answer all three, you make a <i>Three Pointer</i> and earn another 3 points for a total of 6.</p><br>
+            <p>The top players each week earn payouts and there are also season-long prizes.</p><br>
+            <p><strong>New this season: <i>POOLS!</i></strong></p>
+            <p>This season, you will have the opportunity to create and join pools where <strong>you</strong> set the stakes.</p><br>
+            <p>There is the option to host both private and public pools:</p>
+            <li>Keep the $$$ in your friend group.</li>
+            <li>Throw down against a rival in a head-to-head 2 player pool.</li>
+            <li>Let anyone challege you for higher stakes.</li><br>
+            <p>Pool creation will be open during week 1 and pools will begin on week 2.</p><br>
+            <p><strong>Buy in: </strong>$21 + $4 league admin fee</p><br>
+          <p><strong>Sign Up Here:</strong></p>
+        </div>
+      <div>
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbyS6qMg0UgLh1LiN0jF6PcT6uv7wl0PLAMI-OXQu5Q94sDxIOIx7VdwFUy834it7eiP/exec" id="register-form" >
+          <label>Name: <br><input type="text" name="Name" required /></label><br>
+          <label>Phone Number: <br><input type="text" name="Number"></label><br>
+          <label>Venmo Username: <br><input type="text" name="Venmo" required /></label><br>
+          <label>If you are a new player and someone other than Nolan invited you, put their name here: <br><input type="text" name="Invite"></label><br>
+          <label>Password: <br><input type="text" name="Password" required /></label><br>
+          <p><i>(it can be literally anything. 1 or more letters.)</i></p>
+          <br>
+          <input type="submit" id="register-submit" value="Submit">
+          <p id="submit-confirm"></p>
+        </form>
+        <br>
+        <p><i>NOTE: you will NOT be able to log-in until I approve you and add you as a user.</i></p>
+      </div>-->
+    </section>
+      
+    <section id="password-table" class="password-table-section">
+      <h1>Password Table</h1>
+      <table id="passwords-logged">
+        <tr>
+          <th>Name</th>
+          <th>Password</th>
+        </tr>
+      </table>
+    </section>
+  </body>
+</html>
+
+<script>
+    function logout(){
+        localStorage.clear();
+        window.location.replace("index.html");
+    }
+</script>
+
+
+<script>
+    const loginSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1E4kXJmtZDnhUgNJbwueyBExZGirDgFSA7lXldYs-hgE/values/Logins/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    names_data_fetch();
+    
+    async function names_data_fetch(){
+        let login_sheet_data = await fetch(loginSheetLink)    
+          .then((response) => response.json());
+        var num_pw = 44;
+        for (let k = 0; k < num_pw; k++){
+            var name_option = login_sheet_data.values[1+k][0];
+            var user_pw = login_sheet_data.values[1+k][1];
+            var table = document.getElementById("passwords-logged");
+            var row = table.insertRow(k+1); 
+            cell1 = row.insertCell(0);
+            cell1.innerHTML = name_option;
+            cell2 = row.insertCell(1);
+            cell2.innerHTML = user_pw;
+            let newOption = new Option(name_option, name_option);
+            const select = document.getElementById("login-name-select");
+            select.add(newOption,undefined);
+        } 
+    }
+</script>
+
+<script>
+    var registration_window = false;
+    if(registration_window) {
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('register').style.display = 'block';
+    }
+    else {
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('register').style.display = 'none';
+    }
+</script>
+
+<script>
+    document.getElementById("forgot-pw-message").style.display = "none";
+    function forgotPW() {
+        var x = document.getElementById("forgot-pw-message");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>
+
+<script>
+    window.addEventListener("load", function() {
+        var login_form = document.getElementById('login-form');
+        login_form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const data = new FormData(login_form);
+            entered_un = data.get("login-name-select");
+            entered_pw = data.get("password-typed");
+            searchPwTable(entered_un, entered_pw);
+        });
+    });
+</script>
+
+<script>
+    function searchPwTable(un, pw) {
+        var table = document.getElementById("passwords-logged");
+        
+        // Loop through all table rows
+        for (i = 1; i < table.rows.length; i++) {
+            var idx_name = table.rows[i].cells[0].innerText;
+            if (idx_name==un){
+                var idx_pw = table.rows[i].cells[1].innerText;
+                if (idx_pw==pw){
+                    localStorage.setItem("logged-in", true);
+                    localStorage.setItem("user", entered_un);
+                    window.location.href = "sbl_home.html";
+                }
+            }          
+        }
+    }
+</script>
+
+<script>
+    window.addEventListener("load", function() {
+        var reg_form = document.getElementById('register-form');
+        reg_form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            document.getElementById("register-submit").disabled=true;
+            const data = new FormData(reg_form);
+            const action = e.target.action;
+            fetch(action, {
+                method: 'POST',
+                body: data,
+            })
+            .then(() => {
+                var r = confirm("Registration Successful. You will be granted the ability to log in soon. Time to get excited for the season!");
+                if (r == true){
+                    window.location.reload();
+                }
+            })
+        });
+    });
+</script>
+
+<script>
+    var curr_user = localStorage.getItem("user");
+    if(curr_user!="Admin"){
+        document.getElementById('password-table').style.display = 'none';
+    }
+</script>
+
+<script>
+    if (window.innerWidth < 766) {
+        document.getElementById("nav").style.display = "none";
+    }
+    function myFunction() {
+        var x = document.getElementById("nav");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>

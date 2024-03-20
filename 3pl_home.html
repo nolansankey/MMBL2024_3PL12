@@ -1,0 +1,644 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>Three Pointer League</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width", initial-scale="1">
+    
+    <!-- Keywords used in the website -->
+    <meta name="keywords" content="Three Pointer League, Three Pointer, Nolan Sankey">
+    
+    <!-- Description for Website -->
+    <meta name="description" content="The official website for Three Pointer League">
+    
+    <!-- Bootstrap.css -->
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- Custom styling -->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+  </head>
+    
+  <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+  <body id="page-top" data-spy="scroll" data-target=".navbar fixed-top">
+    <nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="header">
+        <div class="header-text">
+          <h1><strong>3PL</strong></h1>
+          <p id="user-note"></p>
+        </div>
+      </div>
+      <br>
+      <div class="mobile-nav-button">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <p><i>Menu</i></p>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul id="nav" class="nav navbar-nav">
+          <li><a><strong>Home</strong></a></li>
+          <li><a href="3pl_pools.html">Pools</a></li>
+          <li><a href="3pl_picks.html">Full Picks</a></li>
+          <li><a href="3pl_stats.html">Statistics</a></li>
+          <li><a href="3pl_payouts.html">Payouts</a></li>
+          <li><a href="3pl_rules.html">Rules</a></li>
+          <li><a href="3pl_history.html">History</a></li>
+          <!--<li><a href="sbl_home.html"><i>Go to SBL</i></a></li>-->
+          <li><a href="javascript:void(0);" onclick="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="welcome-section">
+        <div id="home_intro_div">
+            <h2><strong><i>Today's Questions</i></strong></h2>
+          <h4 id="pick-status"></h4>
+        </div>
+    </section>
+        
+    <!-- Todays Picks Section -->
+    <section id="todays-picks" class="todays-picks-section">
+      <div id="yet-to-pick">
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbxTGjGJ5zYl-qNcIKaNWjz6wTcLjleztzDrp6YtjX1trQSNEMLSlyAud3r28DBE6CElZQ/exec" id="picks-form">
+          <div class="home_q_div">
+              <h5><i>Question 1</i></h5>
+              <h3 id="q1_text">Question Error</h3>
+              <h4><a id="q1_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
+              <br>
+              <div id="q1_button_yes" class="q_button half_button green_button">
+                <input type="radio" id="q1_yes" name="Q1" value="yes" class="button-input" required>
+                <label id="q1_yes_label" for="q1_yes" onclick="adj_buttons('1','yes')">YES</label>
+              </div>
+              <div id="q1_button_no" class="q_button half_button red_button">
+                <input type="radio" id="q1_no" name="Q1" value="no" class="button-input" required>
+                <label id="q1_no_label" for="q1_no" onclick="adj_buttons('1','no')">NO</label>
+              </div>
+              <div id="q1_button_opt_out" class="q_button full_button blue_button">
+                <input type="radio" id="q1_opt-out" name="Q1" value="opt out" class="button-input" required>
+                <label id="q1_opt-out_txt" for="q1_opt-out" onclick="adj_buttons('1','opt out')">OPT OUT</label>
+              </div>
+          </div>
+            
+          <div class="home_q_div">
+              <h5><i>Question 2</i></h5>
+              <h3 id="q2_text">Question Error</h3>
+              <h4><a id="q2_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
+              <br>
+              <div id="q2_button_yes" class="q_button half_button green_button">
+                <input type="radio" id="q2_yes" name="Q2" value="yes" class="button-input" required>
+                <label id="q2_yes_label" for="q2_yes" onclick="adj_buttons('2','yes')">YES</label>
+              </div>
+              <div id="q2_button_no" class="q_button half_button red_button">
+                <input type="radio" id="q2_no" name="Q2" value="no" class="button-input" required>
+                <label id="q2_no_label" for="q2_no" onclick="adj_buttons('2','no')">NO</label>
+              </div>
+              <div id="q2_button_opt_out" class="q_button full_button blue_button">
+                <input type="radio" id="q2_opt-out" name="Q2" value="opt out" class="button-input" required>
+                <label id="q2_opt-out_txt" for="q2_opt-out" onclick="adj_buttons('2','opt out')">OPT OUT</label>
+              </div>
+          </div>
+            
+          <div class="home_q_div">
+              <h5><i>Question 3</i></h5>
+              <h3 id="q3_text">Question Error</h3>
+              <h4><a id="q3_link_1" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
+              <br>
+              <div id="q3_button_yes" class="q_button half_button green_button">
+                <input type="radio" id="q3_yes" name="Q3" value="yes" class="button-input" required>
+                <label id="q3_yes_label" for="q3_yes" onclick="adj_buttons('3','yes')">YES</label>
+              </div>
+              <div id="q3_button_no" class="q_button half_button red_button">
+                <input type="radio" id="q3_no" name="Q3" value="no" class="button-input" required>
+                <label id="q3_no_label" for="q3_no" onclick="adj_buttons('3','no')">NO</label>
+              </div>
+              <div id="q3_button_opt_out" class="q_button full_button blue_button">
+                <input type="radio" id="q3_opt-out" name="Q3" value="opt out" class="button-input" required>
+                <label id="q3_opt-out_txt" for="q3_opt-out" onclick="adj_buttons('3','opt out')">OPT OUT</label>
+              </div>
+          </div>
+          <br>
+          <input type="submit" id="pick-submit" class="big-submit" value="Submit" onclick="check_req_submit()">
+        </form>
+      </div>
+        
+      <div id="already-picked">
+        <div class="home_q_div">
+            <h5><i>Question 1</i></h5>
+            <h3 id="q1_ap_text">Question Error</h3>
+            <h4><a id="q1_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
+            <br>
+            <div id="q_1_picked_button" class="q_button full_button">
+              <label id="q_1_picked_label" class="already_picked_label"></label>
+            </div>
+        </div>
+              
+        <div class="home_q_div">
+            <h5><i>Question 2</i></h5>
+            <h3 id="q2_ap_text">Question Error</h3>
+            <h4><a id="q2_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
+            <br>
+            <div id="q_2_picked_button" class="q_button full_button">
+              <label id="q_2_picked_label" class="already_picked_label"></label>
+            </div>
+        </div>
+         
+        <div class="home_q_div">
+            <h5><i>Question 3</i></h5>
+            <h3 id="q3_ap_text">Question Error</h3>
+            <h4><a id="q3_link_2" href="javascript:void(0);" onclick="link_error()" rel="noopener noreferrer">(ESPN page)</a></h4>
+            <br>
+            <div id="q_3_picked_button" class="q_button full_button">
+              <label id="q_3_picked_label" class="already_picked_label"></label>
+            </div>
+        </div>
+        <br>
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbxTGjGJ5zYl-qNcIKaNWjz6wTcLjleztzDrp6YtjX1trQSNEMLSlyAud3r28DBE6CElZQ/exec" id="clear-form">
+          <input type="submit" id="clear-pick-submit" class="big-submit" name="clear" value="Clear Picks">
+        </form>
+      </div>
+      <h4 id="below_sub_msg"></h4>
+    </section>
+      
+
+    <!-- Scoreboard Section -->
+    <section id="scores-section" class="scores-section">
+      <h2>View Scores</h2>
+      <p id="scores_text"></p>
+      <form>
+        <select name="pool-select" id="pool-select">
+            <option value="LEAGUE_pool">League</option>
+        </select>
+        <br/>
+        <button onclick="getPool()"> Get Scores </button>
+        <br/>
+        <br>
+    </form>
+      <table id="scores_table" class="styled-table">
+        <thead>
+          <tr>
+            <th scope="col" class="wide_col">Name</th>
+            <th scope="col" class="wide_col">Score</th>
+            <th scope="col" class="wide_col">Change</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+         
+  </body>
+</html>
+
+<script>
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;
+</script>
+
+<script>
+    var is_logged_in = localStorage.getItem("logged-in");
+    var curr_user = localStorage.getItem("user");
+    document.getElementById("user-note").innerHTML = curr_user;
+    if(!is_logged_in){
+        window.location.replace("index.html");
+    }
+    function logout(){
+        localStorage.clear();
+        window.location.replace("index.html");
+    }
+    function link_error(){
+        var error_msg = confirm("Link error. Sorry :(");
+    }
+</script>
+
+<script>
+    const responsesSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1TF3Cdoi614IKqOoedxqqC4e6HATXZ4WRkZO0342Hnyk/values/Responses/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    responses_data_fetch();
+    
+    async function responses_data_fetch(){
+        let responses_data = await fetch(responsesSheetLink)    
+          .then((response) => response.json());
+        var curr_user = localStorage.getItem("user");
+        var has_picked = false;
+        for (let i = 1; i < responses_data.values.length; i++) {
+            player = responses_data.values[i][1]
+            if (player==curr_user){
+                has_picked = true;
+                q1_pick = responses_data.values[i][2];
+                q2_pick = responses_data.values[i][3];
+                q3_pick = responses_data.values[i][4];
+            }
+        }
+        if (has_picked){
+           if(q1_pick == "yes"){
+               document.getElementById("q_1_picked_label").innerHTML = "YES";
+               document.getElementById("q_1_picked_button").setAttribute("class","q_button full_button green_button");
+           }
+           if(q1_pick == "no"){
+                document.getElementById("q_1_picked_label").innerHTML = "NO";
+               document.getElementById("q_1_picked_button").setAttribute("class","q_button full_button red_button");
+           }
+           if(q1_pick == "opt out"){
+                document.getElementById("q_1_picked_label").innerHTML = "OPT OUT";
+               document.getElementById("q_1_picked_button").setAttribute("class","q_button full_button blue_button");
+            }
+            if(q1_pick == "late"){
+                document.getElementById("q_1_picked_label").innerHTML = "LATE";
+               document.getElementById("q_1_picked_button").setAttribute("class","q_button full_button blue_button");
+            }
+            if(q2_pick == "yes"){
+               document.getElementById("q_2_picked_label").innerHTML = "YES";
+               document.getElementById("q_2_picked_button").setAttribute("class","q_button full_button green_button");
+           }
+           if(q2_pick == "no"){
+                document.getElementById("q_2_picked_label").innerHTML = "NO";
+               document.getElementById("q_2_picked_button").setAttribute("class","q_button full_button red_button");
+           }
+           if(q2_pick == "opt out"){
+                document.getElementById("q_2_picked_label").innerHTML = "OPT OUT";
+               document.getElementById("q_2_picked_button").setAttribute("class","q_button full_button blue_button");
+            }
+            if(q2_pick == "late"){
+                document.getElementById("q_2_picked_label").innerHTML = "LATE";
+               document.getElementById("q_2_picked_button").setAttribute("class","q_button full_button blue_button");
+            }
+            if(q3_pick == "yes"){
+               document.getElementById("q_3_picked_label").innerHTML = "YES";
+               document.getElementById("q_3_picked_button").setAttribute("class","q_button full_button green_button");
+           }
+           if(q3_pick == "no"){
+                document.getElementById("q_3_picked_label").innerHTML = "NO";
+               document.getElementById("q_3_picked_button").setAttribute("class","q_button full_button red_button");
+           }
+           if(q3_pick == "opt out"){
+                document.getElementById("q_3_picked_label").innerHTML = "OPT OUT";
+               document.getElementById("q_3_picked_button").setAttribute("class","q_button full_button blue_button");
+            }
+            if(q3_pick == "late"){
+                document.getElementById("q_3_picked_label").innerHTML = "LATE";
+               document.getElementById("q_3_picked_button").setAttribute("class","q_button full_button blue_button");
+            }
+        
+            document.getElementById("pick-status").innerHTML = "<i>Picks Submitted</i>";
+            document.getElementById('yet-to-pick').style.display = 'none'; 
+            document.getElementById('already-picked').style.display = 'block'; 
+        }
+        else {
+            document.getElementById("pick-status").innerHTML = "<i>Yet To Pick</i>";
+            document.getElementById('yet-to-pick').style.display = 'block'; 
+            document.getElementById('already-picked').style.display = 'none'; 
+        }
+    }
+</script>
+
+<script>
+    window.addEventListener("load", function() {
+        var p_form = document.getElementById('picks-form');
+        p_form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const data = new FormData(p_form);
+            var currentdate = new Date(); 
+            var timestamp = Math.floor(new Date().getTime() / 1000);
+            data.append("Name", curr_user);
+            data.append("Timestamp", timestamp);
+            q1_input = data.get("Q1");
+            q2_input = data.get("Q2");
+            q3_input = data.get("Q3");
+            if((q1_input=="opt out"&&q2_input=="opt out")||(q1_input=="opt out"&&q3_input=="opt out")||(q2_input=="opt out"&&q3_input=="opt out")){
+                document.getElementById("below_sub_msg").innerHTML = "Only 1 opt out allowed";
+            }
+            else{
+                document.getElementById("pick-submit").disabled=true;
+                document.getElementById("pick-submit").setAttribute("value","Submitting...");
+                const action = e.target.action;
+                fetch(action, {
+                    method: 'POST',
+                    body: data,
+                })
+                .then(() => {
+                    var r = confirm("Picks Submitted Successfully! Press OK to reload page");
+                    if (r == true){
+                        localStorage.setItem("picked "+today, true);
+                        localStorage.setItem("Q1 "+today, q1_input);
+                        localStorage.setItem("Q2 "+today, q2_input);
+                        localStorage.setItem("Q3 "+today, q3_input);
+                        window.location.reload();
+                    }
+                })
+            }
+        });                      
+    });
+</script>
+
+<script>
+    window.addEventListener("load", function() {
+        var clear_form = document.getElementById('clear-form');
+        clear_form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            document.getElementById("clear-pick-submit").disabled=true;
+            document.getElementById("clear-pick-submit").setAttribute("value","Clearing...");
+            document.getElementById("below_sub_msg").innerHTML = "(please wait)";
+            const data = new FormData(clear_form);
+            data.append("Name", curr_user);
+            data.append("Clear", true);
+            const action = e.target.action;
+            fetch(action, {
+                method: 'POST',
+                body: data,
+            })
+            .then(() => {
+                var r = confirm("Picks Cleared! Press OK to reload page and resubmit");
+                if (r == true){
+                    localStorage.setItem("picked "+today, false);
+                    localStorage.setItem("Q1 "+today, null);
+                    localStorage.setItem("Q2 "+today, null);
+                    localStorage.setItem("Q3 "+today, null);
+                    window.location.reload();
+                }
+            })
+        });
+    });
+</script>
+
+<script>
+
+    function adj_buttons(q_num, pick_yno){
+        if (pick_yno=="yes"){
+            document.getElementById("q"+q_num+"_button_yes").removeAttribute("style");
+            document.getElementById("q"+q_num+"_button_no").setAttribute("style","background-color: #EEE");
+            document.getElementById("q"+q_num+"_button_opt_out").setAttribute("style","background-color: #EEE"); 
+        }
+        if (pick_yno=="no"){
+            document.getElementById("q"+q_num+"_button_yes").setAttribute("style","background-color: #EEE");
+            document.getElementById("q"+q_num+"_button_no").removeAttribute("style");
+            document.getElementById("q"+q_num+"_button_opt_out").setAttribute("style","background-color: #EEE"); 
+        }
+        if (pick_yno=="opt out"){
+            document.getElementById("q"+q_num+"_button_yes").setAttribute("style","background-color: #EEE");
+            document.getElementById("q"+q_num+"_button_no").setAttribute("style","background-color: #EEE");
+            document.getElementById("q"+q_num+"_button_opt_out").removeAttribute("style");
+        }
+    }
+    
+</script>
+
+<script>
+    const questionsSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1TF3Cdoi614IKqOoedxqqC4e6HATXZ4WRkZO0342Hnyk/values/Upcoming Questions/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    let q1_fetch = "Question Error 2";
+    let q2_fetch = "Question Error 2";
+    let q3_fetch = "Question Error 2";
+    var right_now = Date.now();
+    let east_datetime_str = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+    let date_east = new Date(east_datetime_str);
+    questions_data_fetch();
+    
+    async function questions_data_fetch(){
+        let sheet_data = await fetch(questionsSheetLink)    
+          .then((response) => response.json());
+        q1_fetch = sheet_data.values[29][3];
+        q2_fetch = sheet_data.values[30][3];
+        q3_fetch = sheet_data.values[31][3];
+        document.getElementById("q1_text").innerHTML = q1_fetch;
+        document.getElementById("q2_text").innerHTML = q2_fetch;
+        document.getElementById("q3_text").innerHTML = q3_fetch;
+        document.getElementById("q1_ap_text").innerHTML = q1_fetch;
+        document.getElementById("q2_ap_text").innerHTML = q2_fetch;
+        document.getElementById("q3_ap_text").innerHTML = q3_fetch;
+        
+        q1_link_fetch = sheet_data.values[29][4];
+        q2_link_fetch = sheet_data.values[30][4];
+        q3_link_fetch = sheet_data.values[31][4];
+        document.getElementById("q1_link_1").setAttribute("href",q1_link_fetch);
+        document.getElementById("q1_link_1").setAttribute("target","_blank");
+        document.getElementById("q1_link_1").removeAttribute("onclick");
+        document.getElementById("q2_link_1").setAttribute("href",q2_link_fetch);
+        document.getElementById("q2_link_1").setAttribute("target","_blank");
+        document.getElementById("q2_link_1").removeAttribute("onclick");
+        document.getElementById("q3_link_1").setAttribute("href",q3_link_fetch);
+        document.getElementById("q3_link_1").setAttribute("target","_blank");
+        document.getElementById("q3_link_1").removeAttribute("onclick");
+        document.getElementById("q1_link_2").setAttribute("href",q1_link_fetch);
+        document.getElementById("q1_link_2").setAttribute("target","_blank");
+        document.getElementById("q1_link_2").removeAttribute("onclick");
+        document.getElementById("q2_link_2").setAttribute("href",q2_link_fetch);
+        document.getElementById("q2_link_2").setAttribute("target","_blank");
+        document.getElementById("q2_link_2").removeAttribute("onclick");
+        document.getElementById("q3_link_2").setAttribute("href",q3_link_fetch);
+        document.getElementById("q3_link_2").setAttribute("target","_blank");
+        document.getElementById("q3_link_2").removeAttribute("onclick");
+        
+        q1_time_fetch = sheet_data.values[29][2];
+        q1_time_fetch_num = Date.parse(q1_time_fetch);
+        if(date_east >= q1_time_fetch_num){
+            document.getElementById("q1_button_yes").style.display = 'none';
+            document.getElementById("q1_yes_label").style.display = 'none';
+            document.getElementById("q1_button_no").style.display = 'none';
+            document.getElementById("q1_no_label").style.display = 'none';
+            document.getElementById("q1_opt-out").setAttribute("value","late");
+            document.getElementById("q1_opt-out").setAttribute("checked","chedked");
+            document.getElementById("q1_opt-out_txt").innerHTML = "LATE ("+q1_time_fetch+" Eastern)";
+        }
+        q2_time_fetch = sheet_data.values[30][2];
+        q2_time_fetch_num = Date.parse(q2_time_fetch);
+        if(date_east >= q2_time_fetch_num){
+            document.getElementById("q2_button_yes").style.display = 'none';
+            document.getElementById("q2_yes_label").style.display = 'none';
+            document.getElementById("q2_button_no").style.display = 'none';
+            document.getElementById("q2_no_label").style.display = 'none';
+            document.getElementById("q2_opt-out").setAttribute("value","late");
+            document.getElementById("q2_opt-out").setAttribute("checked","chedked");
+            document.getElementById("q2_opt-out_txt").innerHTML = "LATE ("+q2_time_fetch+" Eastern)";
+        }
+        q3_time_fetch = sheet_data.values[31][2];
+        q3_time_fetch_num = Date.parse(q3_time_fetch);
+        if(date_east >= q3_time_fetch_num){
+            document.getElementById("q3_button_yes").style.display = 'none';
+            document.getElementById("q3_yes_label").style.display = 'none';
+            document.getElementById("q3_button_no").style.display = 'none';
+            document.getElementById("q3_no_label").style.display = 'none';
+            document.getElementById("q3_opt-out").setAttribute("value","late");
+            document.getElementById("q3_opt-out").setAttribute("checked","chedked");
+            document.getElementById("q3_opt-out_txt").innerHTML = "LATE ("+q3_time_fetch+" Eastern)";
+        }
+    }
+
+</script>
+
+<script>
+    const scoresSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1TF3Cdoi614IKqOoedxqqC4e6HATXZ4WRkZO0342Hnyk/values/Scores/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    let score_item = "Scores Error 2";
+    scores_data_fetch();
+    
+    async function scores_data_fetch(){
+        let scores_data = await fetch(scoresSheetLink)    
+          .then((response) => response.json());
+        var num_payers = 43;
+        var table = document.getElementById("scores_table");
+        var curr_user = localStorage.getItem("user");
+        for (let i = 0; i < num_payers; i++) {
+            var player = scores_data.values[4+i][5];
+            var row_add = i+1;
+            if (player==curr_user){
+                var row_add = i+1;
+            }
+            var row = table.insertRow(row_add);
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = player;
+            var cell2 = row.insertCell(1);
+            cell2.innerHTML = scores_data.values[4+i][6];
+            var cell3 = row.insertCell(2);
+            cell3.innerHTML = scores_data.values[4+i][12];
+            if (player==curr_user){
+                cell1.classList.add("user-cell");
+                cell2.classList.add("user-cell");
+                cell3.classList.add("user-cell");
+            }
+            if (scores_data.values[4+i][10]==1){
+                cell2.classList.add("green_border");
+            }      
+        }
+    }
+    
+    const poolsLookupLink = "https://sheets.googleapis.com/v4/spreadsheets/1TF3Cdoi614IKqOoedxqqC4e6HATXZ4WRkZO0342Hnyk/values/Pool Participation/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    pool_name_fetch();
+    
+    pool_lookup_name_start_idx = 6;
+    pool_lookup_name_idx = 0;
+    pool_lookup_num_pools_idx = 1;
+    pool_lookup_pools_start_idx = 2;
+    
+    async function pool_name_fetch(){
+        let pool_name_data = await fetch(poolsLookupLink)    
+          .then((response) => response.json());
+        var num_payers = pool_name_data.values[1][1];
+        var curr_user = localStorage.getItem("user");
+        for (let i = 0; i < num_payers; i++) {
+            var player = pool_name_data.values[pool_lookup_name_start_idx+i][pool_lookup_name_idx];
+            if (player==curr_user){
+                num_pools = pool_name_data.values[pool_lookup_name_start_idx+i][pool_lookup_num_pools_idx];
+                for (let j = 0; j < num_pools; j++) {
+                    pool_name = pool_name_data.values[pool_lookup_name_start_idx+i][pool_lookup_pools_start_idx+j];
+                    var option = document.createElement("option");
+                    option.text = pool_name;
+                    document.getElementById("pool-select").add(option);
+                }
+            }
+        }
+    }
+    
+    const scoresReqLink = "https://sheets.googleapis.com/v4/spreadsheets/1TF3Cdoi614IKqOoedxqqC4e6HATXZ4WRkZO0342Hnyk/values/Pools/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+
+    function getPool() {
+        event.preventDefault();
+        clearScoresTable();
+        pool_req = document.getElementById("pool-select").value;
+        if (pool_req == "LEAGUE_pool") {
+          scores_data_fetch();
+        }
+        else{
+          scores_req_data_fetch();
+        }
+    }
+    
+    function clearScoresTable(){
+            var myTable = document.getElementById("scores_table");
+            var rowCount = myTable.rows.length;
+            for (var x=rowCount-1; x>0; x--) {
+                myTable.deleteRow(x);
+            }
+        }
+    
+    pool_first_idx = 2;
+    pool_spacing = 11;
+    pool_name_row = 2;
+    pool_players_row = 13;
+    pool_data_start_row = 15;
+    pool_names_add = 2;
+    pool_scores_add = 3;
+    pool_change_add = 8;
+    pool_rank_add = 6;
+
+    
+    async function scores_req_data_fetch(){
+        let pool_scores_data = await fetch(scoresReqLink)    
+          .then((response) => response.json());
+        var table = document.getElementById("scores_table");
+        var curr_user = localStorage.getItem("user");
+        var pool_req = document.getElementById("pool-select").value;
+        num_pools = pool_scores_data.values[0][0];
+        for (let i = 0; i < num_pools; i++) {
+            var pool_name = pool_scores_data.values[pool_name_row][pool_first_idx+pool_spacing*i];
+            if (pool_name==pool_req){
+                pool_col = pool_first_idx+pool_spacing*i;
+                pool_players = pool_scores_data.values[pool_players_row][pool_col];
+                for (let j = 0; j < pool_players; j++) {
+                    player_name = pool_scores_data.values[pool_data_start_row+j][pool_col+pool_names_add];
+                    player_score = pool_scores_data.values[pool_data_start_row+j][pool_col+pool_scores_add];
+                    player_change = pool_scores_data.values[pool_data_start_row+j][pool_col+pool_change_add];
+                    player_rank = pool_scores_data.values[pool_data_start_row+j][pool_col+pool_rank_add];
+                    var row_add = j+1;
+                    var row = table.insertRow(row_add);
+                    var cell1 = row.insertCell(0);
+                    cell1.innerHTML = player_name;
+                    var cell2 = row.insertCell(1);
+                    cell2.innerHTML = player_score;
+                    var cell3 = row.insertCell(2);
+                    cell3.innerHTML = player_change;
+                    if (player_name==curr_user){
+                        cell1.classList.add("user-cell");
+                        cell2.classList.add("user-cell");
+                        cell3.classList.add("user-cell");
+                    }
+                    if (player_rank==1){
+                        cell2.classList.add("green_border");
+                    }
+                }
+            }
+        }
+    }
+    
+</script>
+
+<script>
+    const thisWeekSheetLink = "https://sheets.googleapis.com/v4/spreadsheets/1TF3Cdoi614IKqOoedxqqC4e6HATXZ4WRkZO0342Hnyk/values/This Week's Picks/?key=AIzaSyBDAMBO6YH4isbUYYgjK1NF9LwGiur6z-Y";
+    this_week_data_fetch();
+    
+    async function this_week_data_fetch(){
+        
+        let this_picks_data = await fetch(thisWeekSheetLink)    
+          .then((response) => response.json());
+        var num_players = 43;
+        var curr_user = localStorage.getItem("user");
+        for (let i = 0; i < num_players; i++) {
+            var player = this_picks_data.values[3][5+i*3];
+            if (player==curr_user){
+                if (this_picks_data.values[2][5+i*3]>0){
+                    document.getElementById('q1_opt-out').style.display = 'none';
+                    document.getElementById('q2_opt-out').style.display = 'none';
+                    document.getElementById('q3_opt-out').style.display = 'none';
+                    document.getElementById('q1_opt-out_txt').style.display = 'none';
+                    document.getElementById('q2_opt-out_txt').style.display = 'none';
+                    document.getElementById('q3_opt-out_txt').style.display = 'none';
+                }
+            }    
+        }
+    }   
+</script>
+
+<script>
+    if (window.innerWidth < 766) {
+        document.getElementById("nav").style.display = "none";
+    }
+    function myFunction() {
+        var x = document.getElementById("nav");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>
