@@ -419,6 +419,7 @@
             document.getElementById("bet-payout").innerHTML = wager_amt+" point bet pays "+prospective_payout+" points";
             if (MIC_prospective_payout<50){
                 document.getElementById("MIC-text").innerHTML = "Make it count? $"+MIC_wager_amt+" to win $"+MIC_prospective_payout+" ";
+                document.getElementById("make-it-count").style.display = 'inline';
             }
             else {
                 document.getElementById("MIC-text").innerHTML = "Make it count payout exceeded";
